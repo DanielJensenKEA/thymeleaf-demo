@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Search Results</title>
+</head>
+<body>
+
+<h2>Search Results</h2>
+
+<div th:if="${filteredPeople.isEmpty()}">
+    <p>No results found for your search.</p>
+</div>
+
+<table th:if="${not #lists.isEmpty(filteredPeople)}">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Age</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="person : ${filteredPeople}">
+        <td th:text="${person.name}"></td>
+        <td th:text="${person.age}"></td>
+    </tr>
+    </tbody>
+</table>
+
+<a href="/searchForm">Go Back</a>
+
+</body>
+</html>
